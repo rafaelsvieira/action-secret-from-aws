@@ -1,0 +1,26 @@
+{
+  "name": "action-secret-from-aws",
+  "version": "1.0.0",
+  "description": "Get secrets from AWS Secret Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelsvieira/action-secret-from-aws.git"
+  },
+  "keywords": [
+    "Github",
+    "Actions"
+  ],
+  "author": "rafaelsvieira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaelsvieira/action-secret-from-aws/issues"
+  },
+  "homepage": "https://github.com/rafaelsvieira/action-secret-from-aws#readme",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
