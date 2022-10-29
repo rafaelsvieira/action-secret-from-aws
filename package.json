@@ -2,8 +2,9 @@
   "name": "action-secret-from-aws",
   "version": "1.0.0",
   "description": "Get secrets from AWS Secret Manager",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "rimraf ./dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/rafaelsvieira/action-secret-from-aws#readme",
   "devDependencies": {
+    "@types/node": "^18.11.7",
+    "rimraf": "^3.0.2",
     "typescript": "^4.8.4"
   }
 }
