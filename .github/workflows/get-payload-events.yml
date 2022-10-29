@@ -1,0 +1,17 @@
+run-name: Payload from ${{ github.event_name }}
+
+on:
+  pull_request:
+    types: [opened, closed, reopened]
+  push:
+  workflow_dispatch:
+
+jobs:
+  printJob:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: |
+        echo "$GITHUB_CONTEXT"
