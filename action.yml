@@ -1,0 +1,9 @@
+name: 'action-secret-from-aws'
+description: 'Output secret from AWS Secrets Manager'
+inputs:
+  secretList:
+    description: 'List of secrets separeted by comma'
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
