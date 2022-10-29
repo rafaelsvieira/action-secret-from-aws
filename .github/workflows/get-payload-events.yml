@@ -1,4 +1,4 @@
-run-name: Payload from ${{ github.event_name }}
+run-name: Payload from ${{ github.event_name }} event
 
 on:
   pull_request:
@@ -11,16 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: test
-        run: |
-          ls -la
-          cd .github/
-          ls -la
       - name: Action local
-        uses: ./.github/actions/action-secret-from-aws
-
-    # - name: Dump GitHub context
-    #   env:
-    #     GITHUB_CONTEXT: ${{ toJson(github) }}
-    #   run: |
-    #     echo "$GITHUB_CONTEXT"
+        uses: ./
+        with:
+          secretList: 'SECRET_A,SECRET_B'

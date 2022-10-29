@@ -11,9 +11,7 @@
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:@shopify/typescript"
+    "prettier"
   ],
   "env": {
     "node": true,
