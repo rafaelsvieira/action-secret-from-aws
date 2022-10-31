@@ -14,4 +14,4 @@ jobs:
       - name: Action local
         uses: ./
         with:
-          secretList: 'SECRET_A,SECRET_B'
+          secretList: 'SECRET_A'

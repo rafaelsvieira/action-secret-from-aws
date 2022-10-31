@@ -1,12 +1,13 @@
-import * as github from '@actions/github';
 import * as core from '@actions/core';
+import { main } from './main';
 
-export async function main() {
-  core.debug('Show Github context:');
-  core.debug(JSON.stringify(github.context, null, 2));
-  core.debug('Show inputs:');
-  let secretList = core.getInput('secretList');
-  core.debug(secretList);
+async function run() {
+  try {
+    await main();
+  } catch (error: any) {
+    core.debug(`${error}`);
+    core.setFailed(`${error.message}`);
+  }
 }
 
-main();
+run();

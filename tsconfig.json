@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "es2017",
+    "module": "esnext",
     "lib": ["es6"],
     "allowJs": true,
     "outDir": "dist",
@@ -9,6 +9,7 @@
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "resolveJsonModule": true
   }
 }

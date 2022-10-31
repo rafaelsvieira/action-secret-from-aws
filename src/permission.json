@@ -1,0 +1,10 @@
+{
+    "SECRET_A": {
+        "exclude": [
+            "test/*"
+        ],
+        "include": [
+            "arafaelsvieira/*"
+        ]
+    }
+}
