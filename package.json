@@ -1,5 +1,6 @@
 {
   "name": "action-secret-from-aws",
+  "type": "module",
   "version": "1.0.0",
   "description": "Get secrets from AWS Secret Manager",
   "main": "dist/index.js",
