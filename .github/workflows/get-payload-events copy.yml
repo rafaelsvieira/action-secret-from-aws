@@ -3,15 +3,17 @@ run-name: Payload from ${{ github.event_name }} event
 on:
   pull_request:
     types: [opened, closed, reopened]
-  # push:
+  push:
   workflow_dispatch:
 
 jobs:
-  printJob:
+  wait1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Action local
-        uses: ./
-        with:
-          secretList: 'SECRET_A,SECRET_B'
+      - name: Sleep
+        run: sleep 10
+  wait2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep
+        run: sleep 10
