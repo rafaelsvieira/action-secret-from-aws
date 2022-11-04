@@ -9534,6 +9534,7 @@ function main() {
     return main_awaiter(this, void 0, void 0, function* () {
         core.debug('Show Github context:');
         core.info(JSON.stringify(github.context, null, 2)); // TODO: change to debug.
+        core.info(github.context.eventName); // TODO: change to debug.
         let secretList = core.getInput('secretList').replace(/\s/g, '').split(',');
         core.debug(`secretList: ${secretList}`);
         for (const secret of secretList) {

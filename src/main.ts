@@ -6,6 +6,7 @@ import { checkPermissionToAccess } from './modules';
 export async function main() {
   core.debug('Show Github context:');
   core.info(JSON.stringify(github.context, null, 2)); // TODO: change to debug.
+  core.info(github.context.eventName); // TODO: change to debug.
   let secretList = core.getInput('secretList').replace(/\s/g, '').split(',');
   core.debug(`secretList: ${secretList}`);
 
