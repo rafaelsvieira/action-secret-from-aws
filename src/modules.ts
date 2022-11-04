@@ -1,6 +1,6 @@
-import * as github from '@actions/github';
+// import * as github from '@actions/github';
 import * as core from '@actions/core';
-// import * as github from './push-payload.json'; // TOOD: remove after tests
+import * as github from './push-payload.json'; // TOOD: remove after tests
 import * as permission from './permission.json';
 
 export async function checkPermissionToAccess(secretName: string) {
@@ -37,7 +37,9 @@ export async function checkPermissionToAccess(secretName: string) {
 }
 
 async function allowedReusable() {
+  const context: any = github.context;
   core.debug(`Checking reusable`);
+  // TODO: Get workflow and check uses
   return true;
 }
 

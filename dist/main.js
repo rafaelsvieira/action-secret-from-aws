@@ -7,9 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import * as github from '@actions/github';
+// import * as github from '@actions/github';
 import * as core from '@actions/core';
-// import * as github from './push-payload.json'; // TOOD: remove after tests
+import * as github from './push-payload.json'; // TOOD: remove after tests
 import { checkPermissionToAccess } from './modules';
 export function main() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -18,11 +18,10 @@ export function main() {
         let secretList = core.getInput('secretList').replace(/\s/g, '').split(',');
         core.debug(`secretList: ${secretList}`);
         for (const secret of secretList) {
-            // Check repository
             yield checkPermissionToAccess(secret);
         }
         for (const secret of secretList) {
-            // Get AWS secret and set as Github secret
+            // TODO: Get AWS secret and set as Github secret
             core.debug(`Get secret ${secret}`);
         }
     });

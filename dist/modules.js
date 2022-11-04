@@ -7,9 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import * as github from '@actions/github';
+// import * as github from '@actions/github';
 import * as core from '@actions/core';
-// import * as github from './push-payload.json'; // TOOD: remove after tests
+import * as github from './push-payload.json'; // TOOD: remove after tests
 import * as permission from './permission.json';
 export function checkPermissionToAccess(secretName) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -35,6 +35,7 @@ export function checkPermissionToAccess(secretName) {
 function allowedReusable() {
     return __awaiter(this, void 0, void 0, function* () {
         core.debug(`Checking reusable`);
+        // TODO: Get workflow and check uses
         return true;
     });
 }
