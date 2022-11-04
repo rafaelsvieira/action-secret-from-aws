@@ -9538,6 +9538,7 @@ function main() {
         core.info(`Repository: ${(_b = (_a = github.context.payload) === null || _a === void 0 ? void 0 : _a.repository) === null || _b === void 0 ? void 0 : _b.full_name}`);
         core.info(`Workflow: ${github.context.workflow}`);
         core.info(`SHA: ${github.context.sha}`);
+        core.info(`Run ID: ${github.context.runId}`);
         let secretList = core.getInput('secretList').replace(/\s/g, '').split(',');
         core.debug(`secretList: ${secretList}`);
         for (const secret of secretList) {
