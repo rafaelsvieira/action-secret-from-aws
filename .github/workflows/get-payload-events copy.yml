@@ -8,11 +8,13 @@ on:
 
 jobs:
   wait1:
+    name: test
     runs-on: ubuntu-latest
     steps:
       - name: Sleep
         run: sleep 10
   wait2:
+    name: test
     runs-on: ubuntu-latest
     steps:
       - name: Sleep
