@@ -6,9 +6,9 @@ import { checkPermissionToAccess } from './modules';
 export async function main() {
   core.debug('Show Github context:');
   core.debug(JSON.stringify(github.context, null, 2));
-  core.info(github.context.payload?.repository?.full_name?);
-  core.info(github.context.workflow);
-  core.info(github.context.sha);
+  core.info(`Repository: ${github.context.payload?.repository?.full_name}`);
+  core.info(`Workflow: ${github.context.workflow}`);
+  core.info(`SHA: ${github.context.sha}`);
   let secretList = core.getInput('secretList').replace(/\s/g, '').split(',');
   core.debug(`secretList: ${secretList}`);
 

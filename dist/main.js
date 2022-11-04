@@ -12,10 +12,13 @@ import * as core from '@actions/core';
 // import * as github from './push-payload.json'; // TOOD: remove after tests
 import { checkPermissionToAccess } from './modules';
 export function main() {
+    var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
         core.debug('Show Github context:');
-        core.info(JSON.stringify(github.context, null, 2)); // TODO: change to debug.
-        core.info(github.context.eventName); // TODO: change to debug.
+        core.debug(JSON.stringify(github.context, null, 2));
+        core.info(`Repository: ${(_b = (_a = github.context.payload) === null || _a === void 0 ? void 0 : _a.repository) === null || _b === void 0 ? void 0 : _b.full_name}`);
+        core.info(`Workflow: ${github.context.workflow}`);
+        core.info(`SHA: ${github.context.sha}`);
         let secretList = core.getInput('secretList').replace(/\s/g, '').split(',');
         core.debug(`secretList: ${secretList}`);
         for (const secret of secretList) {
