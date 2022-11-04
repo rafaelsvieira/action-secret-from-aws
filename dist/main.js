@@ -20,6 +20,7 @@ export function main() {
         core.info(`Workflow: ${github.context.workflow}`);
         core.info(`SHA: ${github.context.sha}`);
         core.info(`Run ID: ${github.context.runId}`);
+        core.info(`Job key: ${github.context.job}`);
         let secretList = core.getInput('secretList').replace(/\s/g, '').split(',');
         core.debug(`secretList: ${secretList}`);
         for (const secret of secretList) {
