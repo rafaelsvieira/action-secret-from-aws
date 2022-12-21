@@ -1,8 +1,0 @@
-{
-    "watch": [
-        "src"
-    ],
-    "ext": ".ts",
-    "ignore": [],
-    "exec": "npm run pre-checkin && act --env-file gh_env|| exit 0"
-}

@@ -11,12 +11,18 @@ export async function main() {
   core.info(`SHA: ${github.context.sha}`);
   core.info(`Run ID: ${github.context.runId}`);
   core.info(`Job key: ${github.context.job}`);
+  /*
+	core.info(`Job ID: ${github.context.job_id}`);
+	Follow the discussions:
+		- https://github.com/community/community/discussions/8945
+		- https://github.com/community/community/discussions/40291
+	*/
 
   let secretList = core.getInput('secretList').replace(/\s/g, '').split(',');
   core.debug(`secretList: ${secretList}`);
 
   for (const secret of secretList) {
-    // Check repository
+    // Check repository have to permission to get secret
     await checkPermissionToAccess(secret);
   }
 

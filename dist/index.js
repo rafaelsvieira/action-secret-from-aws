@@ -9467,7 +9467,7 @@ var core = __nccwpck_require__(2186);
 // EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
 var github = __nccwpck_require__(5438);
 ;// CONCATENATED MODULE: ./src/permission.json
-const permission_namespaceObject = JSON.parse('{"SECRET_A":{"exclude":["test/*"],"include":["arafaelsvieira/*"]}}');
+const permission_namespaceObject = JSON.parse('{"SECRET_A":{"exclude":["test/*"],"include":["rafaelsvieira/*"]}}');
 var src_permission_namespaceObject = /*#__PURE__*/__nccwpck_require__.t(permission_namespaceObject, 2);
 ;// CONCATENATED MODULE: ./src/modules.ts
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -9481,33 +9481,33 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 };
 
 
-// import * as github from './push-payload.json'; // TOOD: remove after tests
 
 function checkPermissionToAccess(secretName) {
     return __awaiter(this, void 0, void 0, function* () {
-        const context = github.context;
+        const repositoryName = github.context.repo.repo;
         const permissionObj = src_permission_namespaceObject;
         core.debug(`Checking if repository can get secret ${secretName}`);
         if (!permissionObj[secretName])
             throw new Error(`Secret ${secretName} are not mapping.`);
         core.debug(`${secretName}: ${JSON.stringify(permissionObj[secretName])}`);
         for (const permission of permissionObj[secretName].exclude) {
-            if (isSubGroup(context.repository, permission))
-                throw new Error(`FOUND_EXCLUDE: Repository ${context.repository} don't have permission to access the secret ${secretName}.`);
+            if (isSubGroup(repositoryName, permission))
+                throw new Error(`FOUND_EXCLUDE: Repository ${repositoryName} don't have permission to access the secret ${secretName}.`);
         }
         const permissionList = permissionObj[secretName].include.filter((item) => {
-            return isSubGroup(context.repository, item);
+            return isSubGroup(repositoryName, item);
         });
         core.debug(`permissionList: ${permissionList}`);
         if (permissionList.length == 0 && !(yield allowedReusable())) {
-            throw new Error(`NOT_FOUND_INCLUDE: Repository ${context.repository} don't have permission to access the secret ${secretName}.`);
+            throw new Error(`NOT_FOUND_INCLUDE: Repository ${repositoryName} don't have permission to access the secret ${secretName}.`);
         }
     });
 }
 function allowedReusable() {
     return __awaiter(this, void 0, void 0, function* () {
+        // TODO: when are using reusable check if reusable can get secret.
         core.debug(`Checking reusable`);
-        return true;
+        return false;
     });
 }
 function isSubGroup(str, wildcard) {
@@ -9540,10 +9540,16 @@ function main() {
         core.info(`SHA: ${github.context.sha}`);
         core.info(`Run ID: ${github.context.runId}`);
         core.info(`Job key: ${github.context.job}`);
+        /*
+          core.info(`Job ID: ${github.context.job_id}`);
+          Follow the discussions:
+              - https://github.com/community/community/discussions/8945
+              - https://github.com/community/community/discussions/40291
+          */
         let secretList = core.getInput('secretList').replace(/\s/g, '').split(',');
         core.debug(`secretList: ${secretList}`);
         for (const secret of secretList) {
-            // Check repository
+            // Check repository have to permission to get secret
             yield checkPermissionToAccess(secret);
         }
         for (const secret of secretList) {
